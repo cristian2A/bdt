@@ -61,9 +61,6 @@ class UsuariosController extends Controller
             require_once '../app/helpers/Security/ControlFormLogin.php';
             $this->form_validation = new Security\ControlFormLogin();
             $result = $this->form_validation->resultControl($this->section);
-            var_dump($result);
-
-
 
             if(isset($result['error']))
             {

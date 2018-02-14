@@ -106,7 +106,6 @@ body{
     display: -ms-inline-flexbox;
     display: inline-flex;
     justify-content:flex-end;
-
     line-height: 30px;
 }
 .header{
@@ -328,6 +327,7 @@ i{
     -webkit-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.5);
             box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.5);
     width: 200px;
+    z-index: 10;
 }
 .login li:hover > .menu-usuario{
     display: -webkit-box;
@@ -641,7 +641,7 @@ form{
     background: var(--color-secundario);
 }
 fieldset{
-    border:1px solid #AAA;
+    border:1px solid #DDD;
     margin:10px 20px;
     padding:5px;
 }

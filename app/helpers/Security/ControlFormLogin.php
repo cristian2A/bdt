@@ -72,27 +72,32 @@ class ControlFormLogin extends Validator
              */
             $msg['form_login']= msg_errors('form_gral', 1);
 
-            if( $filtrado['campos']['usuario']['valid']==false &&
-                $filtrado['campos']['usuario']['c_r']==false)
+            if( $filtrado['campos']['usuario']['valid']==false)
             {
-                $msg ['usuario']= msg_errors('usuario',3);
-                $msg['form_login']= msg_errors('form_gral', 1);
+                if($filtrado['campos']['usuario']['c_r']==false)
+                {
+                    $msg ['usuario']= msg_errors('usuario',3);
+                    $msg['form_login']= msg_errors('form_gral', 1);
+                }
+                else
+                {
+                    $msg ['form_login'] = msg_errors('form_login', 1);
+                }
             }
-            else
+            
+            if( $filtrado['campos']['password']['valid']==false)
             {
-                $msg['form_login'] = msg_errors('form_login', 1);
+               if($filtrado['campos']['password']['c_r']==false)
+                {
+                    $msg['password'] =  msg_errors('password',3);
+                    $msg['form_login']= msg_errors('form_gral', 1);
+                }
+                else
+                {
+                    $msg ['form_login'] = msg_errors('form_login', 1);
+                }
             }
-            if( $filtrado['campos']['password']['valid']==false && 
-                $filtrado['campos']['password']['c_r']==false)
-            {
-                $msg['password'] =  msg_errors('password',3);
-                $msg['form_login']= msg_errors('form_gral', 1);
-            }
-            else
-            {
-                $msg ['form_login'] = msg_errors('form_login', 1);
-            }
-        
+
             $this->form_result  = array('datos'=>$filtrado['campos'], 'error'=>$msg);
            
         }
