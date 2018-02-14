@@ -147,11 +147,7 @@ class Validator
             $control2 = self::filterMinMax($value,$this->control_lenght);
             $control3 = self::required($value, $this->control_required);
         }
-        elseif($this->control_type==''){
-            $control1 = true;
-            $control2= true;
-            $control3 = self::required($value, $this->control_required);
-        }
+
 
         if($control1==true && $control2==true && $control3==true)
         {
@@ -236,7 +232,7 @@ class Validator
     private  function emailfrro ($value)
     { 
         if( preg_match('/^[kvsqo][0-9]{3,6}[@frro.utn.edu.ar]*$/', $value) || 
-            preg_match('/^[a-zA-Z]{3,}[@frro.utn.edu.ar]*$/', $value) )
+            preg_match('/^[a-zA-Z]{3,}[@frro.utn.edu.ar]*$/', $value))
         {
             return true; 
         }
@@ -258,7 +254,7 @@ class Validator
     }
 
 
-    public function mensajesError($campos, $cod='')
+    public function mensajesError($campos, $cod='', $form='')
     {
         if(is_array($campos))
         {

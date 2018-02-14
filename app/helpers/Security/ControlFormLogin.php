@@ -20,11 +20,13 @@ class ControlFormLogin extends Validator
                             );
 
     // Reglas de Validacion Empresas    
+    
     public $rules_e = array( 
                             "usuario" =>array( "type"=>"email", "lenght"=>array(3,50), "required"=>true, "validate"=>true),
                             "password"=>array( "type"=>"string", "lenght"=>array(3,50), "required"=>true, "validate"=>true),
                             "ingresar"=>array( "type"=>"string", "lenght"=>array(NULL,NULL), "required"=>true, "validate"=>false)
                             );
+    
     public $form_result;                            
 
     public function filterLogin($section)
@@ -36,9 +38,8 @@ class ControlFormLogin extends Validator
                 'usuario'   => FILTER_SANITIZE_STRING,
                 'password'    => FILTER_SANITIZE_STRING,
                 'ingresar'      => FILTER_SANITIZE_STRING,
-              );
-            
-            $form_sanit=filter_input_array(INPUT_POST, $args, $add_empty = true); 
+            );
+            $form_sanit=filter_input_array(INPUT_POST, $args, $add_empty = true);
             $form_validate = parent::filterValidate($form_sanit, $this->rules_p);
 
         }elseif($section=='empresas')
@@ -67,46 +68,31 @@ class ControlFormLogin extends Validator
         {
             /**
              *  De este formulario solamente se informará de los siguiente errores:
-             *  - error general de usuario/contraseña no validos
-             * Para evitar dar mayores datos a posibles atacantes,
-             * Los demás errores serán rotulados como usuario/contraseña no validos 
-             * 
-             * $result= "form" => false,
-             *          "campos"=> "usuario"
-             *                              "value" => $value ,
-             *                              "valid"=>false,
-             *                              "cod"=>$cod ,
-             *                              "c_t"=>$control1,
-             *                              "c_l"=> $control2,
-             *                              "c_r"=>$control3
-             *                      "password"
-             *                              "value"=> $value,
-             *                              "valid"=> true
-             */       
-            if( $filtrado['campos']['usuario']['valid']==false)
+             *  - error general login de usuario/contraseña no validos
+             */
+            $msg['form_login']= msg_errors('form_gral', 1);
+
+            if( $filtrado['campos']['usuario']['valid']==false &&
+                $filtrado['campos']['usuario']['c_r']==false)
             {
-                if($filtrado['campos']['usuario']['c_r']==true)
-                {
-                    $msg = msg_errors('general',0);
-                }
-                else{
-
-                    $msg=  msg_errors('usuario',3);
-                }
+                $msg ['usuario']= msg_errors('usuario',3);
+                $msg['form_login']= msg_errors('form_gral', 1);
             }
-            if($filtrado['campos']['password']['valid']==false)
+            else
             {
-                if($filtrado['campos']['password']['c_r']==true)
-                {
-                    $msg = msg_errors('general',0);
-                }
+                $msg['form_login'] = msg_errors('form_login', 1);
             }
-                
-                
-            $msg = parent::mensajesError($filtrado['campos']);
-
-
-            $r = array();
+            if( $filtrado['campos']['password']['valid']==false && 
+                $filtrado['campos']['password']['c_r']==false)
+            {
+                $msg['password'] =  msg_errors('password',3);
+                $msg['form_login']= msg_errors('form_gral', 1);
+            }
+            else
+            {
+                $msg ['form_login'] = msg_errors('form_login', 1);
+            }
+        
             $this->form_result  = array('datos'=>$filtrado['campos'], 'error'=>$msg);
            
         }

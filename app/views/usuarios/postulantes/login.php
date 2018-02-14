@@ -18,7 +18,7 @@
         </div>
 
         <div class="mbody">
-            <div id="mensajes" class="msg-error col-100"><?php if(!empty($error)&&!is_array($error)){echo $error;}?></div>
+            <div id="mensajes" class="msg-error col-100"><?php echo $error['form_login']??'';?></div>
 
             <form action="<?= $seccion;?>/login#formLogin" method="post" id="form_login" >
                 <fieldset>

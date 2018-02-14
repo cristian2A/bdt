@@ -553,7 +553,7 @@ i{
 .modal, 
 .modal2,
 .modal3{
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.0);
     position:fixed;
     top: 0;
     left: 0;

@@ -15,7 +15,9 @@ function msg_errors($name, $nro)
  * [3] => Control3 => control de campo requerido
  * Obs.: Otros indice a indicar tipo de control manuales
  */
-    $error['general'][0] = "El usuario y/o contraseña no son válidos"; // para Login
+    $error['form_login'][1]="El usuario y/o contraseña no son válidos"; 
+    $error['form_gral'][1]="Por favor corregir los campos con errores";
+
     $error['usuario'][1] = "El usuario no es válido"; //solo para registro
     $error['usuario'][2] = "El usuario debe contener al menos 5 caracteres";
     $error['usuario'][3] = "Por favor ingrese su usuario";

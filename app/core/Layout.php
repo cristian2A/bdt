@@ -44,8 +44,8 @@ class Layout
             self::getJS();
 
             //Manejo de datos
-            if(isset($datos_v) && !empty($datos_v)){
-            
+            if(isset($datos_v) && !empty($datos_v))
+            {
                 $user = $datos_v['usuario']??'';
                 $datos = $datos_v['datos']??'';
                 $error = $datos_v['error']??'';

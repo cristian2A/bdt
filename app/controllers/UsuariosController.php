@@ -61,17 +61,20 @@ class UsuariosController extends Controller
             require_once '../app/helpers/Security/ControlFormLogin.php';
             $this->form_validation = new Security\ControlFormLogin();
             $result = $this->form_validation->resultControl($this->section);
-            
-            $user = $result['campos']['usuario']['value'];
-            $pass = $result['campos']['password']['value'];
+            var_dump($result);
+
+
 
             if(isset($result['error']))
             {
+                //var_dump($result['error']);
                 self::formLogin($result);
+
             }
             if(!isset($result['error']))
             {
-
+                $user = $result['campos']['usuario']['value'];
+                $pass = $result['campos']['password']['value'];
                 $login = $this->model->checkLogin($user, $pass);
                 if($login==true)
                 {
@@ -96,9 +99,9 @@ class UsuariosController extends Controller
             self::formLogin($data);
         }
     }
-    public function formLogin($datos=array())
-    {   
-        $this->layout->loadView('usuarios/'.$this->section.'/login', $datos );
+    public function formLogin($datosv)
+    {    
+        $this->layout->loadView('usuarios/'.$this->section.'/login', $datosv );
     }
 
 

@@ -1,8 +1,10 @@
 <?php
 
     // URL Base
-    define ("BASE_URL", "http://192.168.1.2:8080/mvc/public/" );
-    define ("BASE_LINK", "http://192.168.1.2:8080/mvc/" );
+//    define ("BASE_URL", "http://192.168.1.2:8080/mvc/public/" );
+//    define ("BASE_LINK", "http://192.168.1.2:8080/mvc/" );
+    define ("BASE_URL", "http://localhost/bdt/public/" );
+    define ("BASE_LINK", "http://localhost/bdt/" );
 
     // Configuración de APP DEFAULT
     define ("CONTROLLER_DEFAULT", "PostulantesController");
