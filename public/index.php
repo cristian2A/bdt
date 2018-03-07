@@ -5,4 +5,5 @@ session_start();
     unset($_SESSION['user']);
     //Instaciamos la clase controlador
     $start = new Core\App;
+
 ?>

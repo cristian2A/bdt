@@ -92,7 +92,7 @@
             <li><a href="<?= BASE_LINK;?>postulantes">
                     <i class="fa fa-home fa-fw" aria-hidden="true"></i><span>Inicio</span></a></li>   
                 <li><a href="<?= BASE_LINK;?>postulantes/panel">
-                    <i class="fa fa-home fa-fw" aria-hidden="true"></i><span>Mi Panel</span></a></li>    
+                    <i class="fa fa-id-card fa-fw" aria-hidden="true"></i><span>Mi Panel</span></a></li>    
           
                 <li><a href="<?= BASE_LINK;?>postulantes/busquedas">
                 <i class="fa fa-search-plus fa-fw" aria-hidden="true"></i><span>Búsquedas </span></a></li>
